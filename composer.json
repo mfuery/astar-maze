@@ -1,0 +1,24 @@
+{
+    "name": "mmm/maze",
+    "version": "0.1",
+    "description": "AStar 2D Maze Solver",
+    "keywords": ["maze", "astar"],
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Michael Fuery",
+            "email": "mfuery@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mmm\\AStar\\": "src/Mmm/AStar/",
+            "Mmm\\Maze\\": "src/Mmm/Maze/"
+        }
+    },
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+    }
+}
