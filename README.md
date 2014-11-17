@@ -4,10 +4,10 @@ astar-maze
 PHP 2D Maze Pathfinding using AStar algorithm
 
 To Run:
-
+<pre>
 composer update
 php bin/maze.php
-
+</pre>
 
 Coding Challenge
 ----------------
@@ -27,11 +27,15 @@ should read “Yes” followed by the number indicating the shortest path to the
 Write an algorithm that navigates the maze and finds the shortest path to reach the destination.
 
 Sample Input:
+<pre>
 5
 **B*O
 ****B
 *BBB*
 *B***
 ***BD
+</pre>
 Output:
+<pre>
 Yes, 14
+</pre>
