@@ -10,6 +10,7 @@ class AStar2D extends AStar
 	const ORIGIN_TOKEN = 'O';
 	const DESTINATION_TOKEN = 'D';
 	const OPEN_TOKEN = '*';
+	const BOUNDARY_TOKEN = 'B';
 
 	/**
 	 * @var int width
@@ -136,7 +137,7 @@ class AStar2D extends AStar
 			}
 		}
 
-		//PR($this->asciiMap);
+//		PR($this->asciiMap);
 
 		return TRUE;
 	}
@@ -173,6 +174,47 @@ class AStar2D extends AStar
 		}
 
 		return $this->run($origin, $destination);
+	}
+
+	public function generateRandomMaze($w, $h = null)
+	{
+		$bWeight = 0.3;
+		//$starWeight = 0.75;
+		$maze = array();
+
+		if (!$h) {
+			$h = $w;
+		}
+
+		for ($j = 0; $j < $h; $j++) {
+			$maze[$j] = array();
+			for ($i = 0; $i < $w; $i++) {
+				$n = mt_rand() / mt_getrandmax();
+				$char = ($n < $bWeight) ? static::BOUNDARY_TOKEN : static::OPEN_TOKEN;
+				$maze[$j][$i] = $char;
+			}
+		}
+
+		$maze[0][0] = static::ORIGIN_TOKEN;
+		$maze[$w-1][$h-1] = static::DESTINATION_TOKEN;
+
+		return $maze;
+	}
+
+	public function asciiMapToText($asciiMap)
+	{
+		$h = count($asciiMap);
+		$w = count($asciiMap[0]);
+		$str = '';
+
+		for ($j = 0; $j < $h; $j++) {
+			for ($i = 0; $i < $w; $i++) {
+				$str .= $asciiMap[$j][$i];
+			}
+			$str .= "\n";
+		}
+
+		return $str;
 	}
 
 	/**

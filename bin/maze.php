@@ -43,6 +43,9 @@ function PR($s) {
 
 // Begin Main // CLI Input //
 
+$aStar = new AStar2D();
+
+
 $input = $sampleInput[0];
 $command = (isset($argv[1])) ? $argv[1] : FALSE;
 $idx = (int)$command;
@@ -72,9 +75,15 @@ if ($command === FALSE || !is_int($idx)) {
 	}
 
 } else {
+	if ($command == 'random') {
+		$maze = $aStar->generateRandomMaze(50, 50);
+		//PR($maze);
+		$randMaze = $aStar->asciiMapToText($maze);
+		$input = $randMaze;
+		echo $input;
 
-	// Use canned sample input
-	if (isset($sampleInput[$idx])) {
+	} else if (isset($sampleInput[$idx])) {
+		// Use canned sample input
 		$input = $sampleInput[$idx];
 	}
 }
@@ -82,7 +91,7 @@ if ($command === FALSE || !is_int($idx)) {
 
 // Run algorithm
 
-$aStar = new AStar2D();
+//$aStar = new AStar2D();
 $result = $aStar->parse($input);
 if (!$result) {
 	echo "Something wrong with your input.\n" . $aStar->getMessage();
