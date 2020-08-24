@@ -1,7 +1,7 @@
 astar-maze
 ==========
 
-PHP 2D Maze Pathfinding using AStar algorithm
+Maze Pathfinding using AStar algorithm
 
 To Run:
 <pre>
